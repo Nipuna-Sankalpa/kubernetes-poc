@@ -18,4 +18,4 @@ spec:
   volumes:
     - name: web-dir
       persistentVolumeClaim:
-        claimName: web-directory
+        claimName: web-directory-phantom
