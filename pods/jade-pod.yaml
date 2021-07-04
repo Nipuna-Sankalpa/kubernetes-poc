@@ -10,7 +10,7 @@ spec:
       image: orangehrm/orangehrm-environment-images:uat-7.2-centos
       volumeMounts:
         - mountPath: /var/www/html
-          name: test-volume
+          name: web-dir
       ports:
         - containerPort: 443
         - containerPort: 80
