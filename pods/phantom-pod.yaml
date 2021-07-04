@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: phantom-server
+  labels:
+    category: test-1
+spec:
+  containers:
+    - name: phantom-container
+      image: orangehrm/orangehrm-environment-images:uat-7.2-centos
+      volumeMounts:
+        - mountPath: /var/www/html
+          name: web-dir
+      ports:
+        - containerPort: 443
+        - containerPort: 80
+  nodeName: "ip-10-0-1-238.ec2.internal"
+  volumes:
+    - name: web-dir
+      persistentVolumeClaim:
+        claimName: web-directory
