@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jade-server
+  labels:
+    category: test-1
+spec:
+  containers:
+    - name: jade-container
+      image: orangehrm/orangehrm-environment-images:uat-7.2-centos
+      volumeMounts:
+        - mountPath: /var/www/html
+          name: test-volume
+      ports:
+        - containerPort: 443
+        - containerPort: 80
+  volumes:
+    - name: web-dir
+      persistentVolumeClaim:
+        claimName: web-directory

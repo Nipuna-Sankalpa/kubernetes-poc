@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jade-server
+  labels:
+    server-category: uat
+    php-version: "7.2"
+    id: jade
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      server-category: uat
+      php-version: "7.2"
+  template:
+    metadata:
+      labels:
+        server-category: uat
+        php-version: "7.2"
+        id: jade
+    spec:
+      containers:
+        - name: jade-server
+          image: "orangehrm/orangehrm-environment-images:uat-7.2-centos"
+          ports:
+            - containerPort: 443
+            - containerPort: 22
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: web-dir
+
+      volumes:
+        - name: web-dir
+          persistentVolumeClaim:
+            claimName: web-directory
