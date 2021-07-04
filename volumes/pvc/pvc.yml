@@ -3,9 +3,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: web-directory
 spec:
-  storageClassName: "aws-bronze-class"
+  storageClassName: ""
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 2Gi
+  volumeName: pv-name
