@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache
+  labels:
+    app: apache
+spec:
+  ports:
+    - port: 443
+      name: web
+    - port: 22
+      name: ssh
+  clusterIP: None
+  selector:
+    id: raven
