@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: raven-server
+  labels:
+    server-category: uat
+    php-version: "7.2"
+    id: raven
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      server-category: uat
+      php-version: "7.2"
+      id: raven
+  template:
+    metadata:
+      labels:
+        server-category: uat
+        php-version: "7.2"
+        id: raven
+    spec:
+      containers:
+        - name: raven-server
+          image: "orangehrm/orangehrm-environment-images:uat-7.2-centos"
+          ports:
+            - containerPort: 443
+            - containerPort: 22
+          volumeMounts:
+            - mountPath: /var/www/html
+              name: web-dir-raven
+
+      volumes:
+        - name: web-dir-raven
+          persistentVolumeClaim:
+            claimName: web-directory-raven
