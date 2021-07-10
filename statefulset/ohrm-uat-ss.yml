@@ -8,6 +8,7 @@ metadata:
     id: raven
 spec:
   replicas: 3
+  serviceName: raven-ssh
   selector:
     matchLabels:
       server-category: uat
