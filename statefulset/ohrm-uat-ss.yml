@@ -31,7 +31,7 @@ spec:
             - mountPath: /var/www/html
               name: web-directory
           command: ["/usr/sbin/sshd"]
-          args: ["-D", "&"]
+          args: ["-D"]
 
       volumes:
         - name: web-directory
