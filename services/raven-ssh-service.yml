@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: raven-ssh
 spec:
-  type: NodePort
+  type: loadbalancer
   ports:
     - targetPort: 22
       port: 22
