@@ -32,6 +32,6 @@ spec:
               name: web-dir-raven
 
       volumes:
-        - name: web-dir-raven
+        - name: web-directory
           persistentVolumeClaim:
             claimName: web-directory-raven
