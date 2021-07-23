@@ -34,4 +34,4 @@ spec:
       volumes:
         - name: web-directory
           persistentVolumeClaim:
-            claimName: web-directory-raven
+            claimName: web-directory
