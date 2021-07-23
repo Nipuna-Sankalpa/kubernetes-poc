@@ -29,7 +29,7 @@ spec:
             - containerPort: 22
           volumeMounts:
             - mountPath: /var/www/html
-              name: web-dir-raven
+              name: web-directory
 
       volumes:
         - name: web-directory
