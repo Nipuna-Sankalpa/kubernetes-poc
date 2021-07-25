@@ -26,6 +26,8 @@ spec:
               name: web-directory
           command: ["/bin/bash","-c"]
           args: ["/usr/sbin/sshd-keygen; /usr/sbin/sshd -D"]
+          securityContext:
+            privileged: true
       volumes:
         - name: web-directory
           persistentVolumeClaim:

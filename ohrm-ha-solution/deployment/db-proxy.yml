@@ -22,3 +22,5 @@ spec:
             - containerPort: 22
           command: ["/bin/bash","-c"]
           args: ["/usr/sbin/sshd-keygen; /usr/sbin/sshd -D"]
+          securityContext:
+            privileged: true
