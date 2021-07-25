@@ -20,7 +20,5 @@ spec:
           image: "orangehrm/orangehrm-environment-images:uat-7.2-centos"
           ports:
             - containerPort: 22
-          command: ["/bin/bash","-c"]
-          args: ["/usr/sbin/sshd-keygen; /usr/sbin/sshd -D"]
           securityContext:
             privileged: true

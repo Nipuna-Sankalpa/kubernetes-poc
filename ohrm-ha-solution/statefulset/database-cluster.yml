@@ -26,8 +26,6 @@ spec:
               name: data-directory
           securityContext:
             privileged: true
-          command: ["/bin/bash","-c"]
-          args: ["/usr/sbin/sshd-keygen; /usr/sbin/sshd -D; mkdir -p /var/lib/mysql"]
 
   volumeClaimTemplates:
     - metadata:
