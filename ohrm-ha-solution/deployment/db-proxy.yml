@@ -20,5 +20,10 @@ spec:
           image: "orangehrm/orangehrm-environment-images:uat-7.2-centos"
           ports:
             - containerPort: 22
+              name: ssh
+            - containerPort: 4008
+              name: 'mysql-read-port'
+            - containerPort: 4006
+              name: 'mysql-readwrite-port'
           securityContext:
             privileged: true
