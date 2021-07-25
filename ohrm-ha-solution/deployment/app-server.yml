@@ -1,28 +1,22 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
-  name: raven-server
+  name: app-server
   labels:
-    server-category: uat
     php-version: "7.2"
-    id: raven
+    id: app-server
 spec:
-  replicas: 3
-  serviceName: apache
+  replicas: 2
   selector:
     matchLabels:
-      server-category: uat
-      php-version: "7.2"
-      id: raven
+      id: app-server
   template:
     metadata:
       labels:
-        server-category: uat
-        php-version: "7.2"
-        id: raven
+        id: app-server
     spec:
       containers:
-        - name: raven-server
+        - name: web-server
           image: "orangehrm/orangehrm-environment-images:uat-7.2-centos"
           ports:
             - containerPort: 443
@@ -32,7 +26,6 @@ spec:
               name: web-directory
           command: ["/bin/bash","-c"]
           args: ["/usr/sbin/sshd-keygen; /usr/sbin/sshd -D"]
-
       volumes:
         - name: web-directory
           persistentVolumeClaim:

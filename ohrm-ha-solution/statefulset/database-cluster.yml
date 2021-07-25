@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: db-server
+  labels:
+    id: db-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      id: db-server
+  template:
+    metadata:
+      labels:
+        id: db-server
+    spec:
+      containers:
+        - name: db-server
+          image: "orangehrm/orangehrm-environment-images:uat-7.2-centos"
+          ports:
+            - containerPort: 3306
+            - containerPort: 22
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: data-directory
+          command: ["/bin/bash","-c"]
+          args: ["/usr/sbin/sshd-keygen; /usr/sbin/sshd -D; mkdir -p /var/lib/mysql"]
+
+    volumeClaimTemplates:
+      - metadata:
+          name: data-directory
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 5Gi
+          storageClassName: 'aws-bronze'
