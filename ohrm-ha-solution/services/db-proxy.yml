@@ -3,10 +3,12 @@ kind: Service
 metadata:
   name: db-cluster
   labels:
-    layer: db-cluster
+    layer: db-proxy
 spec:
   ports:
-    - port: 3306
-      name: web
+    - port: 4008
+      name: ro
+    - port: 4006
+      name: rw
   selector:
-    id: db-server
+    id: db-proxy
