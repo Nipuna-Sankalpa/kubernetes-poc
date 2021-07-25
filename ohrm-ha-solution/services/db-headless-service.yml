@@ -1,15 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: apache
+  name: db
   labels:
-    app: apache
+    layer: db
 spec:
   ports:
-    - port: 443
+    - port: 3306
       name: web
-    - port: 22
-      name: ssh
   clusterIP: None
   selector:
-    id: raven
+    id: db-server
