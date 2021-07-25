@@ -9,6 +9,7 @@ spec:
   selector:
     matchLabels:
       id: db-server
+  serviceName: db
   template:
     metadata:
       labels:
@@ -28,13 +29,13 @@ spec:
           command: ["/bin/bash","-c"]
           args: ["/usr/sbin/sshd-keygen; /usr/sbin/sshd -D; mkdir -p /var/lib/mysql"]
 
-    volumeClaimTemplates:
-      - metadata:
-          name: data-directory
-        spec:
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 5Gi
-          storageClassName: 'aws-bronze'
+  volumeClaimTemplates:
+    - metadata:
+        name: data-directory
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi
+        storageClassName: 'aws-bronze'
