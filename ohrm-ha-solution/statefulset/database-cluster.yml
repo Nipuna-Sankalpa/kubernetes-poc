@@ -5,7 +5,7 @@ metadata:
   labels:
     id: db-server
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       id: db-server
