@@ -22,8 +22,8 @@ spec:
             - containerPort: 22
               name: ssh
             - containerPort: 4008
-              name: 'mysql-read-port'
+              name: 'mysql-r-port'
             - containerPort: 4006
-              name: 'mysql-readwrite-port'
+              name: 'mysql-rw-port'
           securityContext:
             privileged: true
